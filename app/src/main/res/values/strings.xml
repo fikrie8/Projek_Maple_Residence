@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Project Maple</string>
+
+    <string name="MapleProject">Maple Residence</string>
+    <string name="SignIn">Sign In</string>
+    <string name="Register">Register</string>
+
+    <string name="login">Login</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+
+    <string name="firstRowFirstColumn">Fullname :</string>
+    <string name="firstRowSecondColumn">User Full Name</string>
+    <string name="secondRowFistColumn">Address :</string>
+    <string name="secondRowSecondColumn">User Address</string>
+    <string name="thirdRowFirstColumn">Email :</string>
+    <string name="thirdRowSecondColumn">User Email</string>
+    <string name="fourthRowFirstColumn">Gender :</string>
+    <string name="fifthRowFirstColumn">Username :</string>
+    <string name="fifthRowSecondColumn">Username</string>
+    <string name="sixthRowFirstColumn">Password :</string>
+    <string name="sixthRowSecondColumn">Password</string>
+    <string name="seventhRowFirstColumn">Confirm Password :</string>
+    <string name="seventhRowSecondColumn">Confirm Password</string>
+
+    <string name="radio_male">Male</string>
+    <string name="radio_female">Female</string>
+
+    <string name="myDashBoard">My Dashboard</string>
+    <string name="dashBoard1">1st Item</string>
+
+</resources>
