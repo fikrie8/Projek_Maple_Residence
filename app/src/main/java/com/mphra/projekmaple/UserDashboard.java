@@ -51,7 +51,7 @@ public class UserDashboard extends AppCompatActivity {
         listItem.add(new ItemList("Setting","User",R.drawable.setting));
 
         RecyclerView newRecycleView = (RecyclerView)findViewById(R.id.recyclerview);
-        RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(this, listItem);
+        RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(this, listItem, getUsername);
         newRecycleView.setLayoutManager(new GridLayoutManager(this, 2));
         newRecycleView.setAdapter(myAdapter);
     }

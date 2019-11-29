@@ -18,8 +18,9 @@ public class DbManager extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query = "create table " +
-                userTableName + " " +
+        String query;
+
+        query = "create table " + userTableName + " " +
                 "(user_id INTEGER PRIMARY KEY," +
                 "fullname TEXT NOT NULL, " +
                 "address TEXT NOT NULL, " +
@@ -32,7 +33,9 @@ public class DbManager extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String query = "DROP TABLE IF EXISTS tbl_userInfo";
+        String query;
+
+        query = "DROP TABLE IF EXISTS tbl_userInfo";
         db.execSQL(query);
         onCreate(db);
     }
@@ -40,10 +43,11 @@ public class DbManager extends SQLiteOpenHelper {
     public boolean addUser(String fullname, String address, String email, String gender, String username, String password) {
         long result;
         SQLiteDatabase db;
-
-        String passwordEncode = Base64.encodeToString(password.getBytes(),Base64.DEFAULT);
-        db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
+        String passwordEncode;
+
+        passwordEncode = Base64.encodeToString(password.getBytes(),Base64.DEFAULT);
+        db = this.getWritableDatabase();
         cv.put("fullname", fullname);
         cv.put("address", address);
         cv.put("email", email);
@@ -76,9 +80,11 @@ public class DbManager extends SQLiteOpenHelper {
     boolean checkUsernameAndPassword(String username, String password) {
         SQLiteDatabase db;
         Cursor cursor;
-        String passwordEncode = Base64.encodeToString(password.getBytes(),Base64.DEFAULT);
-        String query = "Select * from " + userTableName + " where username = '" + username + "' AND password = '" + passwordEncode + "'";
+        String passwordEncode;
+        String query;
 
+        passwordEncode = Base64.encodeToString(password.getBytes(),Base64.DEFAULT);
+        query = "Select * from " + userTableName + " where username = '" + username + "' AND password = '" + passwordEncode + "'";
         db = this.getReadableDatabase();
         cursor = db.rawQuery(query,null);
         if (cursor.getCount() > 0) {
@@ -91,10 +97,12 @@ public class DbManager extends SQLiteOpenHelper {
     }
 
     String fetchData(String username, String columnName) {
-        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteDatabase db;
         String returnQuery = "";
-        Cursor cursor = db.rawQuery("Select * from tbl_userInfo where username = '" + username + "';", null);
+        Cursor cursor;
 
+        db = this.getReadableDatabase();
+        cursor = db.rawQuery("Select * from tbl_userInfo where username = '" + username + "';", null);
         if(cursor.moveToFirst()){
             do{
                 returnQuery = cursor.getString(cursor.getColumnIndex(columnName));
@@ -104,6 +112,24 @@ public class DbManager extends SQLiteOpenHelper {
         cursor.close();
 
         return returnQuery;
+    }
+
+    Boolean updateData(String fullname, String address, String email, String username, String password) {
+        long result;
+        SQLiteDatabase db;
+
+        String passwordEncode = Base64.encodeToString(password.getBytes(),Base64.DEFAULT);
+        db= this.getWritableDatabase();
+        ContentValues data = new ContentValues();
+        data.put("fullname", fullname);
+        data.put("address", address);
+        data.put("email", email);
+        data.put("password", passwordEncode);
+        result = db.update(userTableName, data, "username =?", new String[]{username});
+        if (result == -1) {
+            return false;
+        }
+        return true;
     }
 }
 
@@ -131,4 +157,8 @@ public class DbManager extends SQLiteOpenHelper {
  resources and making it completely invalid .The behavior is inconsistent and it's not always noticeable but some people
  have already talked about some of the side effects.
  src : https://stackoverflow.com/questions/47735910/what-is-the-significance-of-closing-the-cursor-in-android-sqlite
+
+ Line 117-133 : Method to update the user information. Since the username is not allowed to change, we use this variable as the clause to look into
+ the db. Plus the username is always passed around between activities. So I just reuse what is available instead of making a new query to get the
+ ID first.
  **/

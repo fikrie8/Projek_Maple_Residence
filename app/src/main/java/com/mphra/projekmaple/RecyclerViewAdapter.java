@@ -16,10 +16,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private Context mContext;
     private List<ItemList> mData;
+    private String username;
 
-    public RecyclerViewAdapter (Context mContext, List<ItemList> mData) {
+    public RecyclerViewAdapter (Context mContext, List<ItemList> mData, String username) {
         this.mContext = mContext;
         this.mData = mData;
+        this.username = username;
     }
 
     @NonNull
@@ -41,6 +43,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 Intent intent;
                 if(mData.get(position).getTittle().equals("User Management")){
                     intent = new Intent(mContext, UserManagement.class);
+                    intent.putExtra("username", username);
                 }
                 else if (mData.get(position).getTittle().equals("Vehicle Sticker")) {
                     intent = new Intent(mContext, VehicleSticker.class);
