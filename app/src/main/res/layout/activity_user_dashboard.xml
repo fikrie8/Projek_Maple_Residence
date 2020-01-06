@@ -21,7 +21,7 @@
             android:orientation="vertical" >
 
             <ImageView
-                android:id="@+id/image_profilePicture"
+                android:id="@+id/userDashboardProfileImageView"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginTop="10dp"
@@ -29,7 +29,7 @@
                 android:layout_gravity="center" />
 
             <TextView
-                android:id="@+id/text_profilePicture"
+                android:id="@+id/userDashboardProfileTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"

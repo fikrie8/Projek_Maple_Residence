@@ -8,37 +8,40 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
     ImageView logo;
-    TextView tittle;
     Button signIn;
     Button register;
+    DbAdapter dbAdapter = new DbAdapter(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        signIn = (Button)findViewById(R.id.signIn);
-        register = (Button)findViewById(R.id.register);
-        tittle = (TextView)findViewById(R.id.tittle);
+        signIn = findViewById(R.id.mainSignInButton);
+        register = findViewById(R.id.mainRegisterButton);
 
-        logo = (ImageView)findViewById(R.id.logo);
+        logo = findViewById(R.id.mainLogoImageView);
         Bitmap bmp = BitmapFactory.decodeResource(this.getResources(), R.drawable.maple_logo);
         RoundedBitmapDrawable dr = RoundedBitmapDrawableFactory.create(this.getResources(), bmp);
         dr.setCircular(true);
         logo.setImageDrawable(dr);
+        if (!dbAdapter.createDb()) {
+            Log.e("MainActivity","Failed to create table");
+        }
 
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent signInIntent = new Intent(MainActivity.this, SignInActivity.class);
+                Log.e("MainActivity", "calling signInActivity");
                 startActivity(signInIntent);
             }
         });
@@ -46,8 +49,9 @@ public class MainActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent signInIntent = new Intent(MainActivity.this, RegistrationActivity.class);
-                startActivity(signInIntent);
+                Intent registrationIntent = new Intent(MainActivity.this, RegistrationActivity.class);
+                Log.e("MainActivity", "Calling RegistrationActivity");
+                startActivity(registrationIntent);
             }
         });
     }

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,42 +30,48 @@ public class RegistrationActivity extends AppCompatActivity {
     String usernameContent;
     String passwordContent;
     String confirmPasswordContent;
-    DbManager db = new DbManager(this);
+    DbUserManager db = new DbUserManager(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("RegistrationActivity", "Calling on Create");
         super.onCreate(savedInstanceState);
+        Log.d("RegistrationActivity", "Setting ContentView");
+        Log.d("RegistrationActivity", "this (Context) = " + this);
         setContentView(R.layout.activity_registration);
 
-        fullnameEditText = (EditText)findViewById(R.id.fullNameEditText);
-        addressEditText = (EditText)findViewById(R.id.addressEditText);
-        emailEditText = (EditText)findViewById(R.id.emailEditText);
-        genderGroup = (RadioGroup)findViewById(R.id.radioGroup);
-        usernameEditText = (EditText)findViewById(R.id.usernameEditText);
-        passwordEditText = (EditText)findViewById(R.id.passwordEditText);
-        confirmPasswordEditText = (EditText)findViewById(R.id.confirmPasswordEditText);
-        registerButton = (Button)findViewById(R.id.userRegisterButton);
+        fullnameEditText = findViewById(R.id.registrationFullNameEditText);
+        addressEditText = findViewById(R.id.registrationAddressEditText);
+        emailEditText = findViewById(R.id.registrationEmailEditText);
+        genderGroup = findViewById(R.id.registrationRadioGroup);
+        usernameEditText = findViewById(R.id.registrationUsernameEditText);
+        passwordEditText = findViewById(R.id.registrationPasswordEditText);
+        confirmPasswordEditText = findViewById(R.id.registrationConfirmPasswordEditText);
+        registerButton = findViewById(R.id.registrationRegisterButton);
 
+        Log.d("RegistrationActivity", "before setting onClickListener");
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
                 if (CheckAndGetContent()== 0) {
-                    storeUserInfo();
-                    Intent intent = new Intent(getBaseContext(), UserDashboard.class);
-                    intent.putExtra("username",usernameContent);
-                    intent.putExtra("gender", genderContent);
-                    startActivity(intent);
+                    if (storeUserInfo()) {
+                        Intent intent = new Intent(getBaseContext(), UserDashboard.class);
+                        intent.putExtra("username",usernameContent);
+                        intent.putExtra("gender", genderContent);
+                        startActivity(intent);
+                    }
                 }
             }
         });
     }
 
-    public int CheckAndGetContent(){
+    private int CheckAndGetContent(){
 
+        Log.d("RegistrationActivity", "Inside CheckAndGetContent");
         fullnameContent = fullnameEditText.getText().toString();
         addressContent = addressEditText.getText().toString();
         emailContent = emailEditText.getText().toString();
-        genderButton = (RadioButton)findViewById(genderGroup.getCheckedRadioButtonId());
+        genderButton = findViewById(genderGroup.getCheckedRadioButtonId());
         genderContent = genderButton.getText().toString();
         usernameContent = usernameEditText.getText().toString();
         passwordContent = passwordEditText.getText().toString();
@@ -74,26 +81,25 @@ public class RegistrationActivity extends AppCompatActivity {
                 !emailContent.isEmpty()&& !usernameContent.isEmpty() &&
                 !passwordContent.isEmpty()&& !confirmPasswordContent.isEmpty() )
         {
-            if (db.checkUsername(usernameContent) == true) {
-                return 0;
-            }
-            else {
-                Toast.makeText(getApplicationContext(),"Username already used",Toast.LENGTH_SHORT).show();
-                return -1;
-            }
+            return 0;
         } else {
-            Toast.makeText(getApplicationContext(),"Fields cannot be empty",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Fields cannot be empty",Toast.LENGTH_SHORT).show();
             return -1;
         }
     }
 
-     public void storeUserInfo() {
+     private boolean storeUserInfo() {
 
+        Log.d("RegistrationActivity", "inside storeUserInfo");
         Boolean result;
         result = db.addUser(fullnameContent, addressContent, emailContent, genderContent, usernameContent, passwordContent);
-        if (result == true) {
+        if (result) {
             Toast.makeText(this,"User successfully registered",Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this,"Unable to add User, please check log" , Toast.LENGTH_SHORT).show();
         }
+
+        return result;
     }
 }
 

@@ -3,14 +3,17 @@
 
     <string name="app_name">Project Maple</string>
 
+    <!-- Main Activity -->
     <string name="MapleProject">Maple Residence</string>
     <string name="SignIn">Sign In</string>
     <string name="Register">Register</string>
 
+    <!-- Sign In -->
     <string name="login">Login</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
 
+    <!-- Registration -->
     <string name="firstRowFirstColumn">Fullname :</string>
     <string name="firstRowSecondColumn">User Full Name</string>
     <string name="secondRowFistColumn">Address :</string>
@@ -25,11 +28,27 @@
     <string name="seventhRowFirstColumn">Confirm Password :</string>
     <string name="seventhRowSecondColumn">Confirm Password</string>
 
+    <!-- Registration : Gender Radio -->
     <string name="radio_male">Male</string>
     <string name="radio_female">Female</string>
 
+    <!-- User Dashboard -->
     <string name="myDashBoard">My Dashboard</string>
     <string name="dashBoard1">1st Item</string>
 
+    <!-- User Management -->
     <string name="Update">Update</string>
+
+    <!-- Vehicle Sticker-->
+    <string name="RegisterVehicle">Register Vehicle</string>
+    <string name="DeleteVehicle">Delete Vehicle</string>
+    <string name="RegisteredVehicle">Registered Vehicle :</string>
+    <string name="OwnerName">Owner Name :</string>
+    <string name="OwnerNameSecondColumn">Owner Full Name</string>
+    <string name="Address">Address :</string>
+    <string name="AddressSecondColumn">User Address</string>
+    <string name="PlateNumber">Plate Number :</string>
+    <string name="PlateNumberSecondColumn">Plate Number</string>
+    <string name="Found">Found :</string>
+
 </resources>

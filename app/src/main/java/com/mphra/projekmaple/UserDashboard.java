@@ -30,8 +30,8 @@ public class UserDashboard extends AppCompatActivity {
         Intent intent = getIntent();
         String getUsername = intent.getExtras().getString("username");
         String gender = intent.getExtras().getString("gender");
-        username=(TextView) findViewById(R.id.text_profilePicture);
-        imageProfile = (ImageView)findViewById(R.id.image_profilePicture);
+        username = findViewById(R.id.userDashboardProfileTextView);
+        imageProfile = findViewById(R.id.userDashboardProfileImageView);
         Bitmap bmp = BitmapFactory.decodeResource(this.getResources(), R.drawable.profile_picture);
         RoundedBitmapDrawable dr = RoundedBitmapDrawableFactory.create(this.getResources(), bmp);
         dr.setCircular(true);
@@ -50,7 +50,7 @@ public class UserDashboard extends AppCompatActivity {
         listItem.add(new ItemList("Community Item Booking","User",R.drawable.booking));
         listItem.add(new ItemList("Setting","User",R.drawable.setting));
 
-        RecyclerView newRecycleView = (RecyclerView)findViewById(R.id.recyclerview);
+        RecyclerView newRecycleView = findViewById(R.id.recyclerview);
         RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(this, listItem, getUsername);
         newRecycleView.setLayoutManager(new GridLayoutManager(this, 2));
         newRecycleView.setAdapter(myAdapter);

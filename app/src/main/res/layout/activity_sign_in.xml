@@ -8,7 +8,7 @@
     tools:context=".SignInActivity">
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/signInUsernameEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -22,7 +22,7 @@
         android:hint="@string/username" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/signInPasswordEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -36,7 +36,7 @@
         android:hint="@string/password" />
 
     <Button
-        android:id="@+id/logIn"
+        android:id="@+id/signInLogInButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -34,23 +33,13 @@
                 android:textSize="40sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/userManagementCategory"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:layout_marginTop="10dp"
-                android:text="Category"
-                android:textColor="@color/Black"
-                android:background="@color/LightBlue" />
-
             <TableRow
                 android:id="@+id/firstRow"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content" >
 
                 <TextView
-                    android:id="@+id/fullNameTextView"
+                    android:id="@+id/userManagementFullNameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -61,7 +50,7 @@
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/fullNameEditText"
+                    android:id="@+id/userManagementFullNameEditText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -76,10 +65,10 @@
             <TableRow
                 android:id="@+id/secondRow"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content" >
 
                 <TextView
-                    android:id="@+id/addressTextView"
+                    android:id="@+id/userManagementAddressTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -90,7 +79,7 @@
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/addressEditText"
+                    android:id="@+id/userManagementAddressEditText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -105,10 +94,10 @@
             <TableRow
                 android:id="@+id/thirdRow"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content" >
 
                 <TextView
-                    android:id="@+id/emailTextView"
+                    android:id="@+id/userManagementEmailTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -119,7 +108,7 @@
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/emailEditText"
+                    android:id="@+id/userManagementEmailEditText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -127,17 +116,17 @@
                     android:padding="10dp"
                     android:textColor="@color/Black"
                     android:textSize="20sp"
-                    android:inputType="text"
+                    android:inputType="textEmailAddress"
                     android:hint="@string/thirdRowSecondColumn" />
             </TableRow>
 
             <TableRow
                 android:id="@+id/sixthRow"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content" >
 
                 <TextView
-                    android:id="@+id/passwordTextView"
+                    android:id="@+id/userManagementPasswordTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -148,7 +137,7 @@
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/passwordEditText"
+                    android:id="@+id/userManagementPasswordEditText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -161,7 +150,7 @@
             </TableRow>
 
             <Button
-                android:id="@+id/updateButton"
+                android:id="@+id/userManagementUpdateButton"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="40dp"

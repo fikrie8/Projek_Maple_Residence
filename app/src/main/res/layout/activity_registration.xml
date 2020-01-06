@@ -15,7 +15,7 @@
 
         <!-- first element of the row-->
         <TextView
-            android:id="@+id/fullNameTextView"
+            android:id="@+id/registrationFullNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
@@ -26,7 +26,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/fullNameEditText"
+            android:id="@+id/registrationFullNameEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
@@ -44,7 +44,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/addressTextView"
+            android:id="@+id/registrationAddressTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -55,7 +55,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/addressEditText"
+            android:id="@+id/registrationAddressEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -63,7 +63,7 @@
             android:padding="10dp"
             android:textColor="@color/Black"
             android:textSize="20sp"
-            android:inputType="text"
+            android:inputType="textMultiLine"
             android:hint="@string/secondRowSecondColumn" />
     </TableRow>
 
@@ -73,7 +73,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/emailTextView"
+            android:id="@+id/registrationEmailTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -84,7 +84,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/emailEditText"
+            android:id="@+id/registrationEmailEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -92,7 +92,7 @@
             android:padding="10dp"
             android:textColor="@color/Black"
             android:textSize="20sp"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             android:hint="@string/thirdRowSecondColumn" />
     </TableRow>
 
@@ -102,7 +102,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/genderTextView"
+            android:id="@+id/registrationGenderTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -113,13 +113,13 @@
             android:textSize="20sp" />
 
         <RadioGroup
-            android:id="@+id/radioGroup"
+            android:id="@+id/registrationRadioGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp" >
 
             <RadioButton
-                android:id="@+id/radioMale"
+                android:id="@+id/registrationRadioMale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/radio_male"
@@ -127,7 +127,7 @@
                 android:buttonTint="@color/LightBlue" />
 
             <RadioButton
-                android:id="@+id/radioFemale"
+                android:id="@+id/registrationRadioFemale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/radio_female"
@@ -142,7 +142,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/usernameTextView"
+            android:id="@+id/registrationUsernameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -153,7 +153,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/usernameEditText"
+            android:id="@+id/registrationUsernameEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -171,7 +171,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/passwordTextView"
+            android:id="@+id/registrationPasswordTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -182,7 +182,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/passwordEditText"
+            android:id="@+id/registrationPasswordEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -200,7 +200,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/confirmPasswordTextView"
+            android:id="@+id/registrationConfirmPasswordTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -211,7 +211,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/confirmPasswordEditText"
+            android:id="@+id/registrationConfirmPasswordEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -224,7 +224,7 @@
     </TableRow>
 
     <Button
-            android:id="@+id/userRegisterButton"
+            android:id="@+id/registrationRegisterButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"

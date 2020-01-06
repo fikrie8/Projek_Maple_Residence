@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<TableLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,7 +10,7 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:layout_marginTop="10dp"
-        android:padding="10dp">
+        android:padding="10dp" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,16 +32,121 @@
                 android:textSize="40sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/vehicleStickerCategory"
-                android:layout_width="wrap_content"
+            <TableLayout
+                android:id="@+id/firstRow"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:layout_marginTop="10dp"
-                android:text="Category"
-                android:textColor="@color/Black"
-                android:background="@color/LightBlue" />
+                android:layout_marginTop="40dp"
+                android:stretchColumns="0,1" >
+
+                <TableRow
+                    android:id="@+id/tableRowButton"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+
+                    <Button
+                        android:id="@+id/registerVehicleButton"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_column="0"
+                        android:text="@string/RegisterVehicle"
+                        android:textColor="@color/White"
+                        android:background="@drawable/custom_login_button" />
+
+                    <Button
+                        android:id="@+id/deleteVehicleButton"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_column="1"
+                        android:text="@string/DeleteVehicle"
+                        android:textColor="@color/White"
+                        android:background="@drawable/custom_login_button" />
+                </TableRow>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/RegisteredVehicle"
+                    android:textSize="20sp"
+                    android:textColor="@color/Black" >
+                </TextView>
+
+                <TableRow
+                    android:id="@+id/tableRow1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp" >
+
+                    <TextView
+                        android:id="@+id/firstFullnameVehicleRegistered"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_column="0"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/firstPlateNumberVehicleRegistered"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_column="1"
+                        android:textSize="20sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp" >
+
+                    <TextView
+                        android:id="@+id/secondFullnameVehicleRegistered"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_column="0"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/secondPlateNumberVehicleRegistered"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_column="1"
+                        android:textSize="20sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp" >
+
+                    <TextView
+                        android:id="@+id/thirdFullnameVehicleRegistered"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_column="0"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/thirdPlateNumberVehicleRegistered"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_column="1"
+                        android:textSize="20sp" />
+                </TableRow>
+
+            </TableLayout>
 
         </LinearLayout>
+
     </androidx.core.widget.NestedScrollView>
-</LinearLayout>
+
+</TableLayout>

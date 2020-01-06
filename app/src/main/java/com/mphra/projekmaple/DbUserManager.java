@@ -2,31 +2,33 @@ package com.mphra.projekmaple;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.ContentValues;
 import android.content.Context;
 import android.util.Base64;
+import android.util.Log;
 
-public class DbManager extends SQLiteOpenHelper {
+public class DbUserManager extends SQLiteOpenHelper {
 
     private static final String dbName = "userInfo.db";
     private static final String userTableName = "tbl_userInfo";
 
-    public DbManager(Context context) {
+    public DbUserManager(Context context) {
         super(context, dbName, null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         String query;
-
+        Log.e("DbUserManager", "Creating table");
         query = "create table " + userTableName + " " +
                 "(user_id INTEGER PRIMARY KEY," +
                 "fullname TEXT NOT NULL, " +
                 "address TEXT NOT NULL, " +
                 "email TEXT NOT NULL, " +
                 "gender TEXT NOT NULL, " +
-                "username TEXT NOT NULL, " +
+                "username TEXT NOT NULL UNIQUE, " +
                 "password TEXT NOT NULL)";
     db.execSQL(query);
     }
@@ -35,13 +37,13 @@ public class DbManager extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         String query;
 
-        query = "DROP TABLE IF EXISTS tbl_userInfo";
+        query = "DROP TABLE IF EXISTS " + userTableName;
         db.execSQL(query);
         onCreate(db);
     }
 
     public boolean addUser(String fullname, String address, String email, String gender, String username, String password) {
-        long result;
+        long result = -1;
         SQLiteDatabase db;
         ContentValues cv = new ContentValues();
         String passwordEncode;
@@ -55,7 +57,12 @@ public class DbManager extends SQLiteOpenHelper {
         cv.put("username", username);
         cv.put("password", passwordEncode);
 
-        result = db.insert(userTableName, null, cv);
+        try {
+            result = db.insertOrThrow(userTableName, null, cv);
+        } catch (SQLiteException e) {
+            Log.e("DbUserManager","result = " + result);
+            Log.e("DbUserManager","SQLException = " + e);
+        }
         if (result == -1) {
             return false;
         }

@@ -8,13 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class UserManagement extends AppCompatActivity {
 
-    private TextView tittle,category;
+    private TextView tittle;
     private ImageView image;
     private EditText fullnameEditText;
     private EditText addressEditText;
@@ -25,33 +24,37 @@ public class UserManagement extends AppCompatActivity {
     String addressContent;
     String emailContent;
     String passwordContent;
-    DbManager db= new DbManager(this);
+    DbUserManager db= new DbUserManager(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_management);
-        tittle=(TextView) findViewById(R.id.userManagementTittle);
-        category=(TextView) findViewById(R.id.userManagementCategory);
-        image=(ImageView) findViewById(R.id.userManagementThumbnail);
 
-        Intent intent = getIntent();
-        String getTittle = intent.getExtras().getString("Tittle");
-        int getImage = intent.getExtras().getInt("Thumbnail");
-        final String getUsername = intent.getExtras().getString("username");
+        Intent intent;
+        String getTittle;
+        int getImage;
+        final String getUsername;
 
+        intent = getIntent();
+        getTittle = intent.getExtras().getString("Tittle");
+        getImage = intent.getExtras().getInt("Thumbnail");
+        getUsername = intent.getExtras().getString("username");
+
+        tittle = findViewById(R.id.userManagementTittle);
+        image = findViewById(R.id.userManagementThumbnail);
         tittle.setText(getTittle);
         image.setImageResource(getImage);
-        fullnameEditText = (EditText) findViewById(R.id.fullNameEditText);
-        addressEditText = (EditText) findViewById(R.id.addressEditText);
-        emailEditText = (EditText) findViewById(R.id.emailEditText);
-        passwordEditText = (EditText) findViewById(R.id.passwordEditText);
-        updateButton = (Button) findViewById(R.id.updateButton);
+        fullnameEditText = findViewById(R.id.userManagementFullNameEditText);
+        addressEditText = findViewById(R.id.userManagementAddressEditText);
+        emailEditText = findViewById(R.id.userManagementEmailEditText);
+        passwordEditText = findViewById(R.id.userManagementPasswordEditText);
+        updateButton = findViewById(R.id.userManagementUpdateButton);
 
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                if ( updateUserInfo(getUsername)== true) {
+                if ( updateUserInfo(getUsername)) {
                     Toast.makeText(getApplicationContext(),"User info has been updated",Toast.LENGTH_LONG).show();
                     String genderContent;
                     Intent intent;

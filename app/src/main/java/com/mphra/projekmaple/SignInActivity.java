@@ -19,15 +19,15 @@ public class SignInActivity extends AppCompatActivity {
     Button logIn;
     String usernameContent;
     String passwordContent;
-    DbManager db = new DbManager(this);
+    DbUserManager db = new DbUserManager(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-        username = (EditText)findViewById(R.id.username);
-        password = (EditText)findViewById(R.id.password);
-        logIn = (Button)findViewById(R.id.logIn);
+        username = findViewById(R.id.signInUsernameEditText);
+        password = findViewById(R.id.signInPasswordEditText);
+        logIn = findViewById(R.id.signInLogInButton);
 
         username.getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener(){
                     @Override
@@ -64,11 +64,11 @@ public class SignInActivity extends AppCompatActivity {
                 boolean userExist;
                 boolean access;
                 String gender;
-                if (CheckUsernameAndPasswordFields()== true) {
+                if (CheckUsernameAndPasswordFields()) {
                     userExist = db.checkUsername(usernameContent);
-                    if (userExist == false) {
+                    if (!userExist) {
                         access = db.checkUsernameAndPassword(usernameContent, passwordContent);
-                        if (access == true) {
+                        if (access) {
                             gender = db.fetchData(usernameContent,"gender");
                             Intent intent = new Intent(getBaseContext(), UserDashboard.class);
                             intent.putExtra("username",usernameContent);
@@ -85,7 +85,6 @@ public class SignInActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     public boolean CheckUsernameAndPasswordFields(){

@@ -41,27 +41,35 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View v) {
                 Intent intent;
-                if(mData.get(position).getTittle().equals("User Management")){
-                    intent = new Intent(mContext, UserManagement.class);
-                    intent.putExtra("username", username);
+                String userOption= mData.get(position).getTittle();
+
+                switch (userOption) {
+                    case "User Management":
+                        intent = new Intent(mContext, UserManagement.class);
+                        intent.putExtra("username", username);
+                        break;
+
+                    case "Vehicle Sticker":
+                        intent = new Intent(mContext, VehicleSticker.class);
+                        intent.putExtra("username", username);
+                        break;
+
+                    case "Security Payment":
+                        intent = new Intent(mContext, SecurityPayment.class);
+                        break;
+
+                    case "Community Item Booking":
+                        intent = new Intent(mContext, CommunityItemBooking.class);
+                        break;
+
+                    case "Setting":
+                        intent = new Intent(mContext, Setting.class);
+                        break;
+
+                    default:
+                        intent = new Intent(mContext, UserManagement.class);
                 }
-                else if (mData.get(position).getTittle().equals("Vehicle Sticker")) {
-                    intent = new Intent(mContext, VehicleSticker.class);
-                }
-                else if (mData.get(position).getTittle().equals("Security Payment")) {
-                    intent = new Intent(mContext, SecurityPayment.class);
-                }
-                else if (mData.get(position).getTittle().equals("Report Issues")) {
-                    intent = new Intent(mContext, ReportIssue.class);
-                }
-                else if (mData.get(position).getTittle().equals("Community Item Booking")) {
-                    intent = new Intent(mContext, CommunityItemBooking.class);
-                }
-                else if (mData.get(position).getTittle().equals("Setting")) {
-                    intent = new Intent(mContext, Setting.class);
-                } else {
-                    intent = new Intent(mContext, UserManagement.class);
-                }
+
                 intent.putExtra("Tittle",mData.get(position).getTittle());
                 intent.putExtra("Thumbnail",mData.get(position).getThumbnail());
                 mContext.startActivity(intent);
@@ -81,9 +89,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         public MyViewHolder (View itemView) {
             super(itemView);
-            itemTittle = (TextView) itemView.findViewById(R.id.dashboard_item_text);
-            itemThumbnail = (ImageView) itemView.findViewById(R.id.dashboard_item_image);
-            cardview = (CardView) itemView.findViewById(R.id.card_view);
+            itemTittle = itemView.findViewById(R.id.dashboard_item_text);
+            itemThumbnail = itemView.findViewById(R.id.dashboard_item_image);
+            cardview = itemView.findViewById(R.id.card_view);
         }
     }
 }

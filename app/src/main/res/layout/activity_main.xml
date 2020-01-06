@@ -10,7 +10,7 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/logo"
+        android:id="@+id/mainLogoImageView"
         android:layout_width="wrap_content"
         android:layout_height="200dp"
         android:layout_marginTop="50dp"
@@ -18,7 +18,7 @@
         app:srcCompat="@drawable/maple_logo"/>
 
     <TextView
-        android:id="@+id/tittle"
+        android:id="@+id/mainTittleTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/MapleProject"
@@ -31,7 +31,7 @@
         android:layout_marginLeft="10dp"/>
 
     <Button
-        android:id="@+id/signIn"
+        android:id="@+id/mainSignInButton"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -44,7 +44,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/register"
+        android:id="@+id/mainRegisterButton"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -56,6 +56,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/signIn"/>
+        app:layout_constraintStart_toStartOf="@+id/mainSignInButton"/>
 
 </LinearLayout>
